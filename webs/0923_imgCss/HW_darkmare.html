@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>針筒</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-family: '微軟正黑體';
+    }
+    .container{
+        position: absolute;
+        width:  80%;
+        height: 80%;
+        background: rgba(210,210,210,0.2);
+        /* 另一種水平置中的方法 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .mid{
+        position: absolute;
+        width:  100%;
+        height: 100%;
+        /* background: gray; */
+        
+        /* 另一種水平置中的方法 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .mid::after{
+        border: 0.1vw solid rgba(0,0,0,0.3);
+        position: absolute;
+        width:  75%;
+        height: 15%;
+        content: "";
+        position: absolute;
+        background: linear-gradient(to top,
+            rgba(255,255,255,0.1)   0%,
+            rgba(0,0,0,0.2)    50%,
+            rgba(255,255,255,0.1)    100%), lightgray;
+        
+        /* 另一種水平置中的方法 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 3%;
+        
+    }
+    .mid::before{
+        position: absolute;
+        width:  15%;
+        height: 0.5%;
+        content: "";
+        position: absolute;
+        background: black;
+        
+        /* 另一種水平置中的方法 */
+        top: 0;
+        left: 80%;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .side{
+        position: absolute;
+        width:  100%;
+        height: 100%;
+        
+        /* 另一種水平置中的方法 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .side::after{
+        border: 0.1vw solid rgba(0,0,0,0.3);
+        
+        position: absolute;
+        width:  8%;
+        height: 20%;        
+        background: linear-gradient(to top,
+        rgba(255,255,255,0.1)   0%,
+        rgba(0,0,0,0.2)    50%,
+        rgba(255,255,255,0.1)    100%), lightgray;
+        content: "";
+        position: absolute;
+        
+        /* 另一種水平置中的方法 */
+        top: 0;
+        left: 0;
+        right: 80%;
+        bottom: 0;
+        margin: auto;
+        border-radius: 5%;
+    }
+    .side::before{
+
+        border: 0.1vw solid rgba(0,0,0,0.3);
+        position: absolute;
+        width:  60%;
+        height: 25%;
+        content: "";
+        position: absolute;
+        
+        /* 另一種水平置中的方法 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 3%;
+        
+        background: linear-gradient(to top,
+            rgba(255,255,255,0.1)   0%,
+            rgba(0,0,0,0.2)    50%,
+            rgba(255,255,255,0.1)    100%),
+            linear-gradient(to right,
+            lightgray   45%,
+            black    45%,
+            black    60%,
+            lightgoldenrodyellow 60%
+        );  
+
+        
+    }
+
+    .text{
+        position: absolute;
+        width:  100%;
+        height: 100%;
+        
+        /* 另一種水平置中的方法 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .text::after{
+        
+        position: absolute; 
+        content: "Made in Taiwan";
+        position: absolute;
+        font-family: "微軟正黑體";
+        font-size: 2vw;
+        font-weight: 900;
+        color : rgba(0,0,0,0.5);
+        /* 另一種水平置中的方法 */
+        left: 21%;
+        bottom: 38%;
+    }
+    
+    .text::before{
+        
+        width:  60%;
+        height: 6%;
+        position: absolute; 
+        content: "";
+        position: absolute;
+        
+        background: repeating-linear-gradient(to right, black 1% , rgba(0,0,0,0) 1.5%, rgba(0,0,0,0) 7%, black 7.5%);
+        /* 另一種水平置中的方法 */
+        left: 50%;
+        top:  40%;
+        transform: translate(-50%,-43%);
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="mid"></div>
+        <div class="side"></div>
+        <div class="text"></div>
+    </div>
+</body>
+</html>

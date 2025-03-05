@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent="addItem">
+            <input type="text" v-model="input" placeholder="代辦事項" :style="{border : borderStyle}">
+            <input type="submit" value="新增">
+            <hr>
+            <input type="text"  v-model="search" placeholder="搜尋"><br>
+            <input type="button" value="全部標記為已完成" @click="markAll(true)"><input type="button" value="全部標記為未完成" @click="markAll(false)"><br>
+            <input type="button" value="顯示全部" @click="modeChange('全部')"><input type="button" value="顯示已完成" @click="modeChange('已完成')"><input type="button" value="顯示未完成" @click="modeChange('未完成')"><br>
+            <input type="button" value="清除全部" @click="delAll(0)"><input type="button" value="清除已完成" @click="delAll(1)"><input type="button" value="清除未完成" @click="delAll(2)"><br>
+            <hr>
+            目前顯示 {{displayMode}} :共{{searchFilter.length}}個<br>
+            <ul>
+                <!-- 
+                    :key="" 再次綁定某筆資料 可以更有效的連結確保資料正確性
+                    告訴他"哪個東西過濾前以及過濾後是一樣的" 就用那個東西綁
+                -->
+                <li v-for="val in searchFilter" :key="val.id">
+                    <input type="checkbox" v-model="val.done"> 
+                    <span v-if="val.fix">
+                        <input type="text" v-model="val.text" @keydown.esc="changeInput(val.id,0)" @keydown.enter="changeInput(val.id,1)">
+                    </span>
+                    <span v-else>
+                        <del v-if="val.done" @dblclick="doubleClick(val.id)">{{val.text}}</del>
+                        <span v-else @dblclick="doubleClick(val.id)">{{val.text}}</span>
+                    </span>
+                    <input type="button" value="X" @click="delItem(val.id)">
+                </li>
+            </ul>
+            <hr>
+            點兩下編輯清單文字,ESC取消編輯<br>
+        </form>
+
+    </div>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        // 需要使用的vue模組
+        const { ref, reactive, computed, watch, onMounted,  } = Vue
+        // vue起手式
+        Vue.createApp({
+            setup(){
+                
+                // 創建變數以及追蹤
+                const input         = ref('');
+                const search        = ref('');
+                const displayMode   = ref('全部'); 
+                const totalData     = reactive([])
+                let id = 1;
+
+                const borderStyle = computed(()=>{
+                    if(input.value.length == 0 ){
+                        return "6px solid red";
+                    }else if(input.value.length < 3){
+                        return "6px solid yellow";
+                    }else{
+                        return "6px solid green";
+                    }
+                })
+
+                // 新增資料
+                const addItem = () =>{
+                    if(input.value.length < 3){
+                        return 0 ;
+                    }
+                    totalData.push({
+                        id : id++,
+                        text : input.value,
+                        done : false,
+                        fix : false, 
+                        lastval : '',
+                    })
+                    input.value = "";
+                }
+                
+                // 單次刪除
+                const delItem = (id) =>{
+                    const delId = totalData.findIndex((val) => {
+                        return val.id == id ; 
+                    })
+                    totalData.splice(delId,1);
+                }
+
+                // 標記(取消)全部
+                const markAll = (status) => {  
+                    for(let val of searchFilter.value){
+                        val.done = status ;
+                    }
+                }
+                // 批量刪除(包含三種類別)
+                const delAll = (status) => {
+                    for(let val of searchFilter.value){
+                        if(status == 0){
+                            delItem(val.id);
+                        }else if(status == 1 && val.done){
+                            delItem(val.id);
+                        }else if(status == 2 && !val.done){
+                            delItem(val.id);
+                        }
+                    }
+                }
+                // 顯示模式變更
+                const modeChange = (status) => {  
+                    displayMode.value = status ;
+                }
+                // 雙擊編輯
+                const doubleClick = (id) => {  
+                    const getID = totalData.findIndex((val) => {
+                        return val.id == id ; 
+                    })
+                    const eventItem = totalData[getID];
+                    eventItem.fix = true;
+                    eventItem.lastval = eventItem.text ;
+                }
+                // 更改內容(包含ESC跟ENTER)
+                const changeInput = (id,status) => {  
+                    const getID = totalData.findIndex((val) => {
+                        return val.id == id ; 
+                    })
+                    const eventItem = totalData[getID];
+
+                    if(eventItem.text.length < 3 && status){
+                        alert('停止你大膽的想法');
+                    }
+                    if(!status || eventItem.text.length < 3){
+                        eventItem.text = eventItem.lastval;
+                    }
+                    eventItem.fix = false;
+                }
+
+                // 搜尋列
+                const searchFilter = computed(() => {
+                    const result = totalData.filter(val =>{
+                        if(displayMode.value == '全部'){
+                            return val.text.includes(search.value);
+                        }else if(displayMode.value == '已完成'){
+                            return  (val.text.includes(search.value) && val.done );
+                        }else{
+                            return (val.text.includes(search.value) && !val.done);
+                        }
+                    })
+                    return result;
+                })
+                //資料變更時加入資料庫
+                watch(totalData,() => {
+                    localStorage.vueData = JSON.stringify(totalData);
+                })
+
+                //初始進入頁面時讀取資料庫
+                onMounted(() => {
+                    const getData = JSON.parse(localStorage.vueData || '[]') ;
+                    totalData.splice(0,0, ...getData);
+                    if(totalData.length > 0){
+                        id = totalData[totalData.length - 1].id + 1;
+                    }
+                })
+                // 將要給HTML用的函式及JS變數丟出去給HTML用
+                return {input,search,borderStyle,addItem,totalData,delItem,searchFilter,markAll,displayMode,modeChange,delAll,doubleClick,changeInput}
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

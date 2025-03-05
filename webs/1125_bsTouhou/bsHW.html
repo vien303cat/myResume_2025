@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- reset -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- bootstrap 的 css -->
+    <link rel="stylesheet" href="./css/bootstrap5.3.css">
+    <!-- font aweswome -->    
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.css' integrity='sha512-GmZYQ9SKTnOea030Tbiat0Y+jhnYLIpsGAe6QTnToi8hI2nNbVMETHeK4wm4MuYMQdrc38x+sX77+kVD01eNsQ==' crossorigin='anonymous'/>
+
+
+    <style>
+        #introduce{
+            background-color: var(--bs-gray-300);
+        }
+        #emailForm{
+            background-color: var(--bs-gray-300);
+        }
+
+        #cardArea{
+            background: url(./image/守矢神社2fix.png) no-repeat center center / cover;
+        }
+        .card {
+            background-color:rgba(255, 255, 255, 0.8)
+        }
+        
+
+        .icon{
+
+            width: 125px;
+            height: 125px;
+            margin-left: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: 80%;
+
+        }
+
+        .icon:hover{
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 80%;
+            width: 150px;
+            height: 150px;
+        }
+        
+        
+        #imgGroup {
+            height: 350px;
+        }
+
+        #imgGroup .carousel-inner,
+        #imgGroup .carousel-item,
+        #imgGroup .carousel-item img {
+            height: 100%;
+        }
+
+        #imgGroup .carousel img {
+            object-fit: cover;
+        }
+
+        @media(min-width:576px) {
+            #imgGroup {
+                height: 100vh;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top  ">
+        <div class="container-fluid">
+            <a class="navbar-brand me-auto ms-3" href="#">遠離塵世的幻想鄉</a>
+        
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- .navbar-collapse是flexbox -->
+            <div id="myNav" class="collapse navbar-collapse" >
+                <ul class="navbar-nav  mb-2 mb-lg-0  ms-3 ms-lg-auto" >
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#top">主要區域</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cardArea">主要角色</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#introduce">場景介紹</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gMap">東方故事</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#emailForm">聯絡我們</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div id="imgGroup" class="carousel slide carousel-fade carousel-white" data-bs-ride="carousel" data-bs-interval="3000">
+        <!-- 指示器 -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="3"></button>
+        </div>
+        <!-- 輪播圖內容 一個 .carousel-item 為一個輪播單位，第一個開始的要設定 .active -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./image/192846.png" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block bg-danger rounded-4" >
+                    <h5>博麗神社</h5>
+                    <p>
+                        博麗神社（ はくれいじんじゃ ，Hakurei Jinja）是坐落在博麗大結界上的一座小日式神社，同時也是東方系列的主角——博麗靈夢的家。
+                        博麗神社可以說是東方系列中最重要的場景之一，幾乎所有的正作遊戲、小說、漫畫的故事都有或多或少的部分發生在這座神社中。
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/194490.png" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block rounded-4" style="background-color: var(--bs-orange);">
+                    <h5>人間之里</h5>
+                    <p> 
+                        是幻想鄉中的人類主要的聚居場所。雖然經常有各種各樣的妖怪來到人類村落的商店購物，但是由於有妖怪賢者的庇護，這裡仍然是幻想鄉中最安全的地點。<br>
+                        從外面世界誤入幻想鄉的人類，如果不願意回去原來的世界並且沒有獨自對付妖怪的能力，全部都會被送到人類村落定居。
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/迷途竹林.png" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block  bg-success rounded-4">
+                    <h5>迷途竹林</h5>
+                    <p> 是一個在人類村落旁邊，位於妖怪之山的相反方向之上的巨大竹林。在迷失竹林中坐落著永遠亭
+                        據說，迷失竹林原先並非處於幻想鄉之內，而是一場海嘯將它沖走，後來抵達幻想鄉中<br>
+                        不熟悉竹林的人類和妖怪很容易在裡面迷路。
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/幻想鄉2.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block  bg-secondary rounded-4">
+                    <h5>幻想鄉全景</h5>
+                    <p>
+                        各種非人的生物，例如妖怪都住在這裡，亦有少數人類居住於此地。
+                        由於有強大的結界將幻想鄉外部遮斷，幻想鄉外部無法確認幻想鄉的存在，同時無法由外部進入幻想鄉。
+                        同樣幻想鄉內部也無法確認幻想鄉外部的樣貌，亦不能離開幻想鄉。因此，妖怪們在此建立了一個與外地相異的文明。
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- 上一張按鈕 -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#imgGroup" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <!-- 下一張按鈕 -->
+        <button class="carousel-control-next" type="button" data-bs-target="#imgGroup" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- 二區卡片*3 -->
+    <div id="cardArea" class="container-fluid  m-auto min-vh-100 py-2 row  ">
+        
+        <div class="card m-auto col-12 col-lg-3 text-dark">
+            <img src="./image/reimu1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bolder fs-3">博麗靈夢</h5>
+                <p class="card-text fw-bold fs-6">
+                    博麗靈夢生來就具有強大的靈力，也是博麗神社有史以來靈力最強大的巫女。
+                    擁有超乎常人的幸運，她的直覺幾乎一定會命中。在幻想鄉內少有對手。遭遇更強甚至無法戰勝的敵人時，也能夠通過符卡規則或運氣化解。
+                </p>
+            </div>
+        </div>
+
+        <div class="card m-auto col-12 col-lg-3 text-dark">
+            <img src="./image/yukari1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bolder fs-3">八雲紫</h5>
+                <p class="card-text fw-bold fs-6">
+                    八雲紫被稱為妖怪賢者，幻想鄉的創始人之一。
+                    擁有超人的頭腦和豐富的經驗與知識，具有「操縱境界程度的能力」，是個力量非常強大的妖怪，八雲紫通常白天睡眠，晚上活動
+                </p>
+            </div>
+        </div>
+
+        <div class="card m-auto col-12 col-lg-3 text-dark" >
+            <img src="./image/marisa1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bolder fs-3">霧雨魔理沙</h5>
+                <p class="card-text fw-bold fs-6">
+                    魔理沙是獨自居住於魔法森林中修行的人類魔法使，喜歡蒐集各種東西。
+                    常與靈夢進行妖怪退治的競爭，雖然在退治妖怪方面十分勇敢，但是經常會惹麻煩，常常與靈夢一起解決異變。
+                </p>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- 三區大格*2 -->
+    <div id="introduce" class=" container-fluid w-100 min-vh-100 p-0 ">
+        <div class="row w-100 h-50 m-0">
+            <div class="col-lg-6 col-md-12 p-0 h-100 order-md-0 ">
+                <img class="img-fluid mh-100 " src="./image/妖怪山.png">
+            </div>
+            <div class="col-lg-6 col-md-12 p-0 pb-3  d-flex flex-column justify-content-center align-items-center bg-success-subtle">
+                <h1 class="mt-5">妖怪山</h1>
+                <p class="m-5">
+                    妖怪之山（ 妖怪 ようかい の 山 やま ，Youkai no Yama）為幻想鄉中唯一一座大山及火山。
+                    正象它的名字那樣，那裡幾乎隨處可見妖怪—以河童與天狗居多—並且人類是不受歡迎的。 
+                    最初的描述出現在東方求聞史紀中，在守矢神社傳送至山的頂峰附近之後就成為了東方風神錄中的關鍵地點。
+                </p>
+                <a href="https://zh.wikipedia.org/zh-tw/%E6%9D%B1%E6%96%B9Project" class="btn btn-success w-50 fs-6 text-white text-decoration-none">
+                    VIEW COLLECTION
+                </a>        
+            </div>
+        </div>
+        <div class="row w-100 h-50 m-0">
+            <div class="col-lg-6 col-md-12  order-lg-1 p-0 h-100 ">
+                <img class="img-fluid mh-100 mw-100" src="./image/紅魔館3.png" >
+            </div>
+            <div class="col-lg-6 col-md-12 pb-3 d-flex flex-column justify-content-center align-items-center bg-danger-subtle ">
+                <h1 class="mt-5">紅魔館</h1>
+                <p class="m-5 ">
+                    紅魔館（ 紅魔館 こうまかん ，Konmakan）一幢吸血鬼蕾米莉亞·斯卡蕾特擁有的西洋風格的大洋館，位於霧之湖邊的一個小山脊上。
+                    從外側看去，紅魔館有著一些深紅色的窗戶，但是不多；這是因為主人的吸血鬼體質，於是館內的大部分房間都是沒有窗戶的。
+                    屋頂上有一個鐘樓，但是它只會在夜晚敲響。
+                    紅魔館的內部空間比外面看起來的要大一些，這是因為女僕長十六夜咲夜擁有操縱時間和空間的能力。
+                </p>
+                <a href="https://zh.wikipedia.org/zh-tw/%E6%9D%B1%E6%96%B9Project" class="btn btn-success w-50 fs-6 text-white text-decoration-none">
+                    VIEW COLLECTION
+                </a>               
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 四區地圖 -->
+    <div id="gMap" class="w-100 min-vh-100">    
+        <iframe class="w-100 min-vh-100 align-middle" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4796.016398217772!2d137.86636867266793!3d36.651486057733514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff7d1ae37465ecf%3A0xc6751451da91a15f!2z5Z-O5ba656We56S-IOaWsOWurg!5e0!3m2!1szh-TW!2stw!4v1734061786903!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- 五區表單 -->
+    <div id="emailForm" class="p-5">    
+        <form class="">
+            <div class="row mb-3 col-lg-12">
+                <h1 class="text-center col-12">聯絡我們</h1>
+                <p class="mt-lg-3 text-center col-12">
+                    東方幻想鄉，位於一個叫做東之國的國度，此地會不斷吸納被現實世界所排除的事物
+                    幽靈、妖怪、人類與神靈共同生活著<br>
+                    任何服務問題或建議抑或是對於幻想鄉還有留戀，歡迎您的告知，謝謝！
+                </p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="mb-3 col-lg-4 col-12">
+                    <label for="name" class="form-label ">姓名</label>
+                    <div class="input-group ">
+                        <input type="text" id="name" class="form-control">
+                        <div class="input-group-text">
+                            先生 <input class="form-check-input mt-0 me-2 ms-1" type="radio" value="1" name="radio" checked>
+                            女士 <input class="form-check-input mt-0 ms-1" type="radio" value="2" name="radio">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                    <label for="phone" class="form-label">電話</label>
+                    <input class="form-control " id="phone">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="mb-3 col-lg-4 col-12">
+                    <label for="email" class="form-label">電子信箱</label>
+                    <input class="form-control" id="email">
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                    <label for="question" class="form-label">喜好作品</label>
+                    <select id="question" class="form-select form-select-md mb-3">
+                        <option selected value="1">東方紅魔鄉</option>
+                        <option value="2">東方妖妖夢</option>
+                        <option value="3">東方永夜抄</option>
+                        <option value="4">東方花映塚</option>
+                        <option value="5">東方風神錄</option>
+                        <option value="6">東方地靈殿</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="mb-3 col-lg-8">
+                    <p >意見需求</p>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="content" style="height: 100px"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center m-1 mb-5 " >
+                <div class="form-check col-lg-8">
+                    <input class="form-check-input" type="checkbox" checked value="" id="checkbox">
+                    <label class="form-check-label" >
+                        收到來自幻想鄉的最新資訊
+                    </label>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-5">
+                <button id="submit" type="button" class="btn btn-secondary col-md-1 col-2">送出</button>
+            </div>
+            
+        </form>
+    </div>
+    
+    <div id="footer" class="container-fluid  bg-black text-light p-4">
+        <div class="row py-4 justify-content-center">
+            <div class="col-lg-2 col-6"><img class="icon" src="./image/199613icon.png"></div>
+            <div class="col-lg-2 col-6">
+                <p>此生無悔入東方</p>
+                <p>來世願入幻想鄉</p>
+                <p><a class=" text-white text-decoration-underline fs-3  " href="https://forum.gamer.com.tw/A.php?bsn=10039">再戰十年</a></p>
+            </div>
+            <div class="col-lg-2 col-6">
+                <p>MyLinks</p>
+                <p>
+                    
+                    <a class=" text-white fs-3  " href="https://github.com/vien303cat" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <br>
+                    <a class=" text-white fs-3  " href="https://github.com/vien303cat/fronted-Class/tree/master/20241125_BS/bshw" target="_blank">
+                        <i class="fa-brands fa-git-alt"></i>
+                    </a>
+                    
+                </p>
+            </div>
+            <div class="col-lg-2 col-6">
+                <p>Contacts</p>
+                <p>vien303cat@gmail.com</p>
+                <p>Phone: +1(0)000 0000 001</p>
+                <p>Fax: +1(0)000 0000 002 </p>
+            </div>
+        </div>
+        <div class="row text-center col-12">
+            <p> Copyright &copy; 2024 YuHsuan Chen - All Rights Reserved </p>
+        </div>
+    </div>
+    <!-- 2.使用 bootstrap 的 js，可以讓我們使用元件進行互動 -->
+    <script src="./js/bootstrap.bundle5.3.js"></script>
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous'></script>
+<script>
+    // 練習sweetAlert
+    $('#submit').click(function(event){
+        Swal.fire({
+            title: "已送出",
+            text: "很開心您也喜歡東方！祝您有個美好快樂的一天！",
+            imageUrl: "./image/itouhouenter2.jpg",
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: "Custom image"
+        });
+    })
+</script>
+</html>

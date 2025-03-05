@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- NES 樣式 -->
+    <!-- minify -->
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <!-- latest -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- core style only -->
+    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
+    <!-- 自分 css -->
+    <link href="./clockcss.css" rel="stylesheet" />
+
+    <!-- Noto Sans字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<style>
+
+</style>
+<body>
+    <!-- particles.js container --> 
+     <div id="particles-js" style="top: 0;"></div> 
+     <!-- stats - count particles -->
+     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+    <!-- Flandre Style ? -->
+    <div id="clock">
+        <!--  -->
+        <div class="tick" style="transform: rotate(0deg);"></div>
+        <div class="tick" style="transform: rotate(30deg);"></div>
+        <div class="tick" style="transform: rotate(60deg);"></div>
+        <div class="tick" style="transform: rotate(90deg);"></div>
+        <div class="tick" style="transform: rotate(120deg);"></div>
+        <div class="tick" style="transform: rotate(150deg);"></div>
+        <div class="tick" style="transform: rotate(180deg);"></div>
+        <div class="tick" style="transform: rotate(210deg);"></div>
+        <div class="tick" style="transform: rotate(240deg);"></div>
+        <div class="tick" style="transform: rotate(270deg);"></div>
+        <div class="tick" style="transform: rotate(300deg);"></div>
+        <div class="tick" style="transform: rotate(330deg);"></div>
+        <!--  -->
+        <div class="diamond-container p1">
+            <div class="d1"></div>
+        </div>
+        <div class="diamond-container p2">
+            <div class="d2"></div>
+        </div>
+        <div class="diamond-container p3">
+            <div class="d3"></div>
+        </div>
+        <div class="diamond-container p4">
+            <div class="d4"></div>
+        </div>
+        <div class="diamond-container p5">
+            <div class="d5"></div>
+        </div>
+        <div class="diamond-container p6">
+            <div class="d6"></div>
+        </div>
+        <div class="diamond-container p7">
+            <div class="d7"></div>
+        </div>
+        <div class="diamond-container p8">
+            <div class="d8"></div>
+        </div>
+        <div class="diamond-container p9">
+            <div class="d9"></div>
+        </div>
+        <div class="diamond-container p10">
+            <div class="d10"></div>
+        </div>
+        <div class="diamond-container p11">
+            <div class="d11"></div>
+        </div>
+        <div class="diamond-container p12">
+            <div class="d12"></div>
+        </div>
+        <div class="diamond-container p13">
+            <div class="d13"></div>
+        </div>
+        <div class="diamond-container p14">
+            <div class="d14"></div>
+        </div>
+        <div class="diamond-container p15">
+            <div class="d15"></div>
+        </div>
+        <div class="diamond-container p16">
+            <div class="d16"></div>
+        </div>
+        <!--  -->
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+        <div id="center"></div>
+    </div>
+    <div id="hat"></div>
+
+    <div id="textArea" class="nes-container with-title is-centered">
+        <p class="title">現在時間</p>
+        <p id="textTime"></p>
+            <div style="background-color:#212529; padding: 1rem 0; border: 3px solid white;">
+            <label>
+            <span style="color: white;">燈光類型：</span>
+                <input type="radio" class="nes-radio is-dark" value="0" name="answer-dark" id="radio0" style="margin-left: 30px;" />
+                <span>循環</span>
+            </label>
+            <label>
+                <input type="radio" class="nes-radio is-dark" value="1" name="answer-dark" checked id="radio1" style="margin-left: 15px;" />
+                <span>滑入</span>
+            </label>
+            <label>
+                <input type="radio" class="nes-radio is-dark" value="2" name="answer-dark" id="radio2" style="margin-left: 15px;"/>
+                <span>隨機</span>
+            </label>
+            </div>
+    </div>
+    <script>
+        // 函式	說明
+        // getFullYear()	西元日期
+        // getMonth()	月份，從 0 開始
+        // getDate()	日
+        // getDay()	星期，從星期天 0 開始
+        // getHours()	小時，0 到 23
+        // getMinutes()	分鐘，0 到 59
+        // getSeconds()	秒鐘，0 到 59
+        // getMilliseeonds()	毫秒， 0 到 999
+        // getTime()	從 1970/1/1 00:00:00 到現在的毫秒數 (其他語言是秒 JS是毫秒因此用的時候可以*1000)
+        // toDateString()	轉換成日期字串
+        // toTimeString()	轉換成時間字串
+        // toLocalDateString()	依語言格式化日期
+        // toLocalTimeString()	依語言格式化時間
+        // toLocaleString(語言)	依語言格式化輸出
+        let mode = 1
+        let repeatnow = 0
+
+        const elClock   = document.getElementById('clock');
+        const elHour    = document.getElementById('hour');
+        const elMinute  = document.getElementById('minute');
+        const elSecond  = document.getElementById('second');    
+
+        const eltextTime  = document.getElementById('textTime');    
+        const diamonds = document.querySelectorAll('.diamond-container [class*=d]')
+        const radios = document.querySelectorAll('.nes-radio.is-dark')
+
+        for (const radio of radios) {
+            radio.onchange = () => {
+                mode = radio.value;
+                // 重設 active 狀態
+                for (const diamod of diamonds) {
+                    diamod.classList.remove('active');
+                }
+                // 如果是循環，重設從第一個開始
+                if (mode == 0) {
+                    repeatnow = 0;
+                    diamonds[0].classList.add('active');
+                    diamonds[diamonds.length - 1 ].classList.add('active');
+                }
+            }
+        }
+        for (const diamod of diamonds) {
+            diamod.onmouseenter = () => {
+                if (mode == 1) diamod.classList.add('active');
+            }
+            diamod.onmouseleave = () => {
+                if (mode == 1) diamod.classList.remove('active');
+            }
+        }
+
+        //隨機func
+        var randNum = (min, max , cnt) => {
+                let num = [];
+                cnt = (max-min) > cnt ? cnt: (max-min);
+                while(num.length < cnt){
+                    let rand = min + Math.round( Math.random() * ( max - min ) );
+                    if( num.includes(rand) ){
+                        continue;
+                    }
+                    num.push(rand);
+                }
+                return num ;
+        }
+
+        const clock = () => {
+            const date = new Date();
+            const h = date.getHours();
+            const m = date.getMinutes();
+            const s = date.getSeconds();
+            
+            // 59秒時動畫時間變成0
+            if(s == 0){
+                elSecond.style.transition = '0s';
+            }else if(s == 1){
+                elSecond.style.transition = `0.5s`;
+            }
+            if(m == 59){
+                elMinute.style.transition = '0s';
+            }else if(s == 1){
+                elMinute.style.transition = `0.5s`;
+            }
+            elHour.style.transform      = `rotate(${h * 30 + (m / 59 * 30) + 90 }deg)`;
+            elMinute.style.transform    = `rotate(${m * 6 + 90}deg)`;
+            elSecond.style.transform    = `rotate(${s * 6 + 90}deg)`;
+
+            eltextTime.innerText = date.toTimeString();
+
+            // mode0:循環亮燈
+            if (mode == 0) {
+                diamonds[repeatnow].classList.remove('active');
+                diamonds[diamonds.length - 1 - repeatnow ].classList.remove('active');
+                console.log(repeatnow,diamonds);
+                repeatnow++;
+                if (repeatnow == diamonds.length / 2 ){
+                    repeatnow = 0;
+                }
+                diamonds[repeatnow].classList.add('active');
+                diamonds[diamonds.length - 1 - repeatnow ].classList.add('active');
+
+            }
+            // mode1:隨機亮燈
+            else if (mode == 2) {
+                const actived = document.querySelectorAll('.active');
+                for(const val of actived){
+                    val.classList.remove('active');
+                }
+                const leftLamp  = randNum(0,7,2);
+                const rightLamp = randNum(8,15,2);
+                for(let i = 0 ; i <= leftLamp.length - 1 ; i++){
+                    diamonds[leftLamp[i]].classList.add('active');
+                    diamonds[rightLamp[i]].classList.add('active');
+                }
+                // console.log(leftLamp,rightLamp);
+            }
+        }
+        setInterval(clock,1000);
+        clock();
+        
+        particlesJS("particles-js", {"particles":{"number":{"value":100,"density":{"enable":true,"value_area":800}},"color":{"value":"#fff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":10,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":500,"color":"#ffffff","opacity":0.4,"width":2},"move":{"enable":true,"speed":1,"direction":"bottom","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"bubble"},"onclick":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":0.5}},"bubble":{"distance":400,"size":4,"duration":0.3,"opacity":1,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+        transition: 1s;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    .col{
+        /* border: 1px #000 solid; */
+        width: 95%;
+        padding: 0.8%;
+        margin: 1%;
+    }
+    .col:nth-child(1){
+        text-align: center;
+    }
+    .col img{
+        width: 60%;
+        margin: auto;
+        display: block;
+    }  
+    h3{
+        padding-top: 2%;
+        font-weight: bolder;
+        font-size: 1.5rem;
+    }
+    h4{
+        padding-top: 4%;
+        font-weight: bolder;
+        font-size: 1.3rem;
+    }
+    p{
+        display: block;
+        font-size: 1rem;
+    }
+    .col hr{
+        margin-top: 5%;
+        border: 1px solid rgba(0,0,0,0.6);
+    }
+
+
+    @media (min-width: 992px) {
+        
+        p{
+            display: none;
+        }
+        .col hr{
+            /* display: none; */
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+        .col {
+            width: 15%;
+            position: absolute;
+            text-align: center;
+        } 
+
+        .col:nth-child(1){
+            width: 30%;
+            top: 50%;
+            left: 50%;
+            /* 移動該元素的大小的一半值 */
+            transform: translate(-50%,-50%);
+        }
+        .col:nth-child(1) h3{
+            font-size: 2.5vw;
+            display: block;
+            padding-top: 1%;
+        }
+        .col:nth-child(1) h4{
+            font-size: 1.5vw;
+            display: block;
+            padding-top: 1%;
+        }
+        .col:nth-child(1) p{
+            font-size: 1vw;
+            display: block;
+        }
+        .col:nth-child(1) hr{
+            display: none;
+        }
+    
+    
+        .col:nth-child(2){
+            top: 0;
+            left: 0;
+        }    
+        .col:nth-child(2) hr {
+            display: block;
+            position: absolute;
+            height: 216%;
+            top: -11%;
+            left: 168%;
+            transform: rotate(104deg);
+        }    
+        .col:nth-child(3){
+            top: -5%;
+            left: 20%;
+        }    
+        .col:nth-child(3) hr {
+            display: block;
+            position: absolute;
+            height: 70%;
+            top: 55%;
+            left: 105%;
+            transform: rotate(124deg);
+        }
+        .col:nth-child(4){
+            top: 40%;
+            left: 5%;
+        }    
+        .col:nth-child(4) hr {
+            display: block;
+            position: absolute;
+            height: 163%;
+            top: -54%;
+            left: 150%;
+            transform: rotate(84deg);
+        }
+        .col:nth-child(5){
+            top: 60%;
+            left: 20%;
+        }    
+        .col:nth-child(5) hr {
+            display: block;
+            position: absolute;
+            height: 50%;
+            top: -30%;
+            left: 112%;
+            transform: rotate(67deg);
+        }
+        .col:nth-child(6){        
+            top: 0%;
+            right: 15%;
+        }    
+        .col:nth-child(6) hr {
+            display: block;
+            position: absolute;
+            height: 118%;
+            top: 43%;
+            right: 117%;
+            transform: rotate(63deg);
+        }
+        .col:nth-child(7){        
+            top: 20%;
+            right: 0%;
+        }    
+        .col:nth-child(7) hr {
+            display: block;
+            position: absolute;
+            height: 262%;
+            top: -59%;
+            right: 170%;
+            transform: rotate(81deg);
+        }
+        .col:nth-child(8){       
+            top: 60%;
+            right: 10%;
+        }    
+        .col:nth-child(8) hr {        
+            display: block;
+            position: absolute;
+            height: 136%;
+            right: 137%;
+            top: -75%;
+            transform: rotate(107deg);
+        }
+    }
+
+
+</style>
+
+</head>
+<body>
+<div class="container">
+    <div class="col">
+        <img src="./rwdimg/wda.png">
+        <h3>泰山職訓局</h3>
+        <h4>從零開始的網頁設計課程</h4>
+        <p>轉職網頁開發人員 掌握就業必備職能 <br> 由淺入深學習技術 強化職場的競爭力</p>
+        <hr>
+    </div>
+    <div class="col">
+        <img src="./rwdimg/html.png">
+        <h3>Html</h3>
+        <p>超文本標記語言是一種用於建立網頁的標準標記語言。HTML是一種基礎技術，常與CSS、JavaScript一起被眾多網站用於設計網頁、網頁應用程式以及行動應用程式的使用者介面。網頁瀏覽器可以讀取HTML檔案，並將其彩現成視覺化網頁。HTML描述了一個網站的結構語意隨著線索的呈現，使之成為一種標記語言而非程式語言。</p>
+        <hr>
+    </div>
+    <div class="col">
+        <img src="./rwdimg/css.png">
+        <h3>CSS3</h3>
+        <p>CSS不僅可以靜態地修飾網頁，還可以配合各種手稿語言動態地對網頁各元素進行格式化。CSS 能夠對網頁中元素位置的排版進行像素級精確控制，支援幾乎所有的字型字號樣式，擁有對網頁對象和模型樣式編輯的能力。</p>
+        <hr>
+    </div>
+    <div class="col">
+        <img src="./rwdimg/js.png">
+        <h3>JavaScript</h3>
+        <p>JavaScript（通常縮寫為JS）是一門基於原型和頭等函式的多範式進階直譯程式語言，它支援物件導向程式設計、指令式編程和函數式程式設計。它提供方法來操控文字、陣列、日期以及正規表示式等。不支援I/O，比如網路、儲存和圖形等，但這些都可以由它的宿主環境提供支援。</p>
+        <hr>
+    </div>
+    <div class="col">
+        <img src="./rwdimg/jq.png">
+        <h3>jQuery</h3>
+        <p>jQuery是一套跨瀏覽器的JavaScript函式庫，用於簡化HTML與JavaScript之間的操作。約翰·雷西格（John Resig）在2006年1月的BarCamp NYC上釋出了第一個版本。目前由Dave Methvin領導的團隊進行開發。</p>
+        <hr>
+    </div>
+    <div class="col">
+        <img src="./rwdimg/bs.png">
+        <h3>Bootstrap</h3>
+        <p>Bootstrap是一組用於網站和網路應用程式開發的開源前端框架，包括HTML、CSS及JavaScript的框架，提供字體排印、表單、按鈕、導航及其他各種元件及Javascript擴充套件，旨在使動態網頁和Web應用的開發更加容易。</p>
+        <hr>
+    </div>
+    <div class="col">
+        <img src="./rwdimg/sass.png">
+        <h3>Sass</h3>
+        <p>Sass是一個將指令碼解析成CSS的手稿語言，即SassScript。Sass包括兩套語法。最開始的語法叫做「縮排語法」，與Haml類似，使用縮排來區分代碼塊，並且用換行將不同規則分隔開。而較新的語法叫做「SCSS」，使用和CSS一樣的塊語法，即使用大括號將不同的規則分開，使用分號將具體的樣式分開。</p>
+        <hr>
+    </div>
+    <div class="col">
+        <img src="./rwdimg/vue.png">
+        <h3>Vue.js</h3>
+        <p>Vue.js是一個用於建立使用者介面的開源MVVM前端JavaScript框架，也是一個建立單頁應用的Web應用框架。Vue.js由尤雨溪建立，由他和其他活躍的核心團隊成員維護。</p>
+        <hr>
+    </div>
+
+</div>
+</body>
+
+</html>

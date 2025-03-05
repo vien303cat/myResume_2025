@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="./reset.css">
+    <title>Document</title>
+    <style>
+        body{
+            background: whitesmoke;
+            /* background: url(../images/ffbg.jpg)  center/cover; */
+        }
+        .container{
+            display: flex;
+            /* 預設主軸為水平排列 */
+            flex-direction: column;
+        }
+        .top{
+            width: 100%;
+            height: 5%;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            display: flex;
+            
+            /* 預設主軸為水平排列 */
+            flex-direction: row;
+            /* 預設不換行 */
+            flex-wrap: nowrap;
+            /* 預設次軸會對彈性項目延伸拉長 */
+            align-items: stretch;
+            font-size: 18px;
+        }
+        .top > div {
+            margin-left: 20%;
+            line-height: 250%;
+        }
+        .top > div:nth-child(2)  {
+            display: flex;
+            margin-right: 20%;
+        }
+        .top > div:nth-child(2) > div {
+            margin-right: 3%;
+        }
+        .topSideWard{
+            color: lightgray;
+        }
+        .photoArea{ 
+            width: 1250px;
+            display: flex;
+            justify-content: center;
+            margin: 0 15%;
+        }
+        .img{
+            margin: 3%;
+        }
+        .img img{
+            width: 700px;
+        }
+        .text{
+            display: flex; 
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .text h1{
+            font-size: 26px;
+            font-weight: bolder;
+            margin-bottom: 2% ;
+        }
+        .text h3{
+            font-size: 16px;
+            color: rgba(0,0,0,0.8);
+            margin-bottom: 5% ;
+            line-height:20px;
+        }
+        .text button{
+            width: 120px;
+            height: 50px;
+            border-radius: 1rem;
+            color: white;
+            background: rgb(17, 38, 229);
+        }
+        .middle{
+            margin: auto;
+            text-align: center;
+            height: 80px;
+            width: 1250px;
+            background: rgba(0,0,0,0.5);
+            font-size: 20px;
+            color: white;
+            line-height: 80px;
+            border-radius: 0.3rem;
+            border: 2px solid black;
+        }
+        .cardArea{
+            width: 1250px;
+            margin: auto;
+            margin-bottom:auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            /* align-items: center; */
+            align-content:space-between;
+        }
+        .card{
+            display: flex;
+            width: 350px;
+            margin: 20px;
+            flex-direction: column;
+            border: 1px gray solid;
+            border-radius: 1rem;
+        }
+        .card img{
+            width: 350px;
+            height: 250px;
+            
+            border-radius:  1rem 1rem 0 0;
+        }
+        .card-body h1{
+            font-size: 24px;
+            margin: 10px;
+            font-weight: bolder;
+        }
+        .card-body p{
+            font-size: 16px;
+            margin: 10px;
+            line-height:20px;
+            
+        }
+        .footer{
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <div style="margin-right: auto">Final Fantasy XIV</div>
+            <div> 
+                <div>Home</div>
+                <div class="topSideWard">About</div>
+                <div class="topSideWard">Contact</div>
+                <div class="topSideWard">Services</div>
+            </div>
+        </div>
+        <div class="photoArea">
+            <div class="img">
+                <img src="../images/FFXIV.jpg">
+            </div>
+            <div class="text">
+                <h1>《Final Fantasy XIV》</h1>
+                <h3>
+                    《Final Fantasy XIV》（日語：ファイナルファンタジーXIV，英語：Final Fantasy XIV，常簡稱為FF14）是一款MMORPG，玩家們會在一個持續不變的世界中相互協同合作，而世界會對玩家們的行動作出反應。玩家需要創建遊戲中使用的角色，並可定製名稱、種族、性別、面部特徵以及初始職業。
+                    <br>龍型蠻神巴哈姆特逃出了人造衛月的封印，引發了毀滅艾奧傑亞大部分地區的第七靈災。在十二神的祝福下，玩家通過時空旅行至5年後的未來而逃過一劫。5年後的艾奧傑亞已在重建下逐漸復甦，但玩家仍然需要應對北方加雷馬帝國入侵的威脅。
+                </h3>
+                
+                    <a href="https://www.finalfantasyxiv.com/">
+                        <button>Click to the Website!</button>
+                    </a>
+            </div>
+        </div>
+        <div class="middle">Final Fantasy XIV 劇情角色介紹</div>
+        <div class="cardArea">
+
+            <div class="card">
+                <img src="../images/ysh2.jpg">
+                <div class="card-body">
+                    <h1 class="card-titl">雅·修特拉·路爾</h1>
+                    <p class="card-text">
+                        雅·修特拉·路爾是隸屬於拂曉血盟的貓魅族賢人。
+                        她精通以太學和魔法學，同時對古代語言和古老傳承造詣很深。
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../images/sqrd.jpg">
+                <div class="card-body">
+                    <h1 class="card-titl">桑克瑞德·沃特斯</h1>
+                    <p class="card-text">
+                        桑克瑞德是隸屬於拂曉血盟的人族賢人。精通野外生存技能，同時也是一位諜報工作的專家。                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../images/uraj.jpg">
+                <div class="card-body">
+                    <h1 class="card-titl">於裏昂熱·奧居雷</h1>
+                    <p class="card-text">
+                        於裏昂熱·奧居雷是拂曉血盟的賢者，沙之家的主管。
+                        身為一位專心研究預言詩的學者，他經常會說出一些雲裏霧裏的話以及做出令人迷茫的行為。                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../images/mfra2.jpg">
+                <div class="card-body">
+                    <h1 class="card-titl">敏菲利亞·沃德</h1>
+                    <p class="card-text">
+                        敏菲利亞·沃德，原十二跡調查會會長，十二跡調查會與救世詩盟合並後擔任了拂曉血盟盟主。
+                        敏菲利亞後來響應海德林的召喚成為了光之巫女，行星的代言人。                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../images/pprm.jpg">
+                <div class="card-body">
+                    <h1 class="card-titl">帕帕力莫·托托力莫</h1>
+                    <p class="card-text">
+                        帕帕力莫·托托力莫是拂曉血盟的賢人。以薩雷安魔法大學第二名的成績畢業的英才，隨後被賢人路易索瓦收為弟子。作為首席弟子長期不僅在學業上、也作為助手幫助師傅。                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="../images/id.jpg">
+                <div class="card-body">
+                    <h1 class="card-titl">伊達·赫克斯特</h1>
+                    <p class="card-text">
+                        伊達·赫克斯特不是純粹的薩雷安人，她出身於阿拉米格。20年前，加雷馬帝國侵占了阿拉米格，和妹妹莉瑟一起離開故鄉的她，雖然逃進了黑衣森林，但由於元靈的拒絕被驅逐出境。                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">FFXIV Introduction © VienCatWeb 2024  </div>
+    </div>
+
+</body>
+</html>

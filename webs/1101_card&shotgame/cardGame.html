@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .card{
+        width: 50px;
+        height: 90px;
+        position: relative;
+        margin: 10px;
+        float: left;
+        /* 設定內層元素在 3D 空間內 */
+        transform-style: preserve-3d;
+        transition: transform 1s;
+
+    }
+    .card-front {
+        width: 100%;
+        height: 100%;
+        background-image: url(./images/cards/1H.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        /* 能不能看到背面 沒加的話就會始終看到位於下層(覆蓋上層)的牌 因此加了這個在旋轉時就會隱藏掉在背面時的圖案*/
+        backface-visibility: hidden;
+    }
+    .card-back {
+        width: 100%;
+        height: 100%;
+        background-image: url(./images/cards/Red_back.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        /* 能不能看到背面 */
+        backface-visibility: hidden;
+        /* (接續27行) 在背面先加 transform: rotateY(180deg); 因此背面的正面就會是本來的180deg 因此兩張牌牌的正面剛好相反 就可以隱藏掉位於背面的圖案*/
+        transform: rotateY(180deg);
+    }
+
+    .card-close{
+        transform: rotateY(180deg);
+    }
+    #clear{
+        position: fixed;
+        width: 100vh;
+        height: 80vh;
+        top: 50%;
+        left: 50%;
+        background: rgba(255, 255, 255, 1);
+        transform:translate(-50%,-50%);
+        border: 1px solid black;
+        display: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .clearFont{
+        width: 80%; 
+        height: 6%;
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid lightgrey;
+        margin: auto;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 30px;
+    }
+    
+    
+    .modeChange{
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 500px;
+        height: 60px;
+        font-size: 20px;
+        margin: auto;
+        
+        transform:translate(-50%,0);
+    }
+    .hint{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 300px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 20px;
+        color: gray;
+    }
+</style>
+<body>
+    <!-- <div class="card">
+        <div class="card-front"></div>
+        <div class="card-back"></div>
+    </div> -->
+    <div id="game">
+
+    </div>
+    <div id="clear">
+        <div class="clearFont">123</div>
+    </div><br>
+    <button class="modeChange">媽勒這卡片也太多了吧...要玩到民國幾年啊o_O</button>
+    <div class="hint">偷偷說:按V可以使用替身攻擊</div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous'></script>
+    <script>
+
+        var cheater = false ;
+        $(document).keydown(function(event) {
+            if (event.key === "F12") {
+                cheater = true ;
+            }
+            if(event.key === "V"){
+                $('.card').removeClass('card-close');
+                pass();
+            }
+        });
+
+        begin();
+        function begin(){
+        // 產生卡片 
+            for(let i = 0 ; i < 26 ; i++){
+                const card = $(`
+                    <div class="card card-close">
+                        <div class="card-front"></div>
+                        <div class="card-back"></div>
+                    </div>
+                `);
+                const cardIndex = i % 13 ;
+                const letterArr = [
+                    "1","2","3","4","5","6","7","8","9","10","J","Q","K"
+                ];
+                const number = letterArr[cardIndex];
+                
+                card.find('.card-front').css('background-image',`url(./images/cards/${number}H.jpg)`);
+                card.attr('data-number',number + "H");
+                $('#game').append(card);
+                
+                if($('.modeChange').prop('disabled') === false ){
+
+                    const card2 = card.clone();
+                    card2.find('.card-front').css('background-image',`url(./images/cards/${number}S.jpg)`);
+                    card2.attr('data-number',number + "S");
+                    $('#game').append(card2);
+                    
+                    const card3 = card.clone();
+                    card3.find('.card-front').css('background-image',`url(./images/cards/${number}C.jpg)`);
+                    card3.attr('data-number',number + "C");
+                    $('#game').append(card3);
+                    
+                    const card4 = card.clone();
+                    card4.find('.card-front').css('background-image',`url(./images/cards/${number}D.jpg)`);
+                    card4.attr('data-number',number + "D");
+                    $('#game').append(card4);
+                
+                }
+
+            }
+                
+
+            // 打亂
+            for( let i = 0 ; i < 100 ; i++){
+                const randA = Math.round(Math.random() * ($('.card').length - 1) );
+                const randB = Math.round(Math.random() * ($('.card').length - 1) );
+                // 提問 為啥這不會重複? (本來的沒消失)  A: insertAfter() 如果本來沒有就新增 有的話就移動位置
+                $('.card').eq(randA).insertAfter($('.card').eq(randB))
+            }
+
+
+            // 點擊翻牌
+            $('.card').click(function(){
+                console.log($(this));
+                if(
+                    // .card 沒有 . card-close代表被翻開
+                    $('.card:not(.card-close)').length < 2 &&
+                    // 這張牌還沒被翻開
+                    $(this).hasClass('card-close') &&
+                    // 這張牌還沒配對
+                    !$(this).hasClass('card-ok')
+                ){
+                    $(this).removeClass('card-close');
+                }
+
+                // 如果翻開兩張了
+                if($('.card:not(.card-close)').length === 2){
+
+
+                    // 兩張都一樣
+                    if( $('.card:not(.card-close)').eq(0).attr('data-number') === $('.card:not(.card-close)').eq(1).attr('data-number')){
+                        // 標記已配對
+                        $('.card:not(.card-close)').addClass('card-ok');
+                        $('.card:not(.card-close)').fadeTo(1000,0);
+
+                    }
+
+                    // 等一秒鐘動畫結束
+                    setTimeout(function(){
+                        // 修bug:在判斷一次以防有人在這1秒的時間差又在點擊沒開的牌
+                        if($('.card:not(.card-close)').length === 2){
+                            // 不管有沒有配對成功都翻回背面
+                            $('.card:not(.card-close)').addClass('card-close');
+                        }
+                        // 已配對數量 = 卡片數量,過關
+                        if($('.card-ok').length === $('.card').length){
+                            pass();
+                        }
+
+                    },500)
+
+                }
+            })
+        }
+
+        function pass(){
+            // 偷作弊
+            if(cheater){
+                $('#clear').css('background-image','url("./images/cards/cheater.jpg")');
+                $('.clearFont').text('恭喜過關,但你484偷作弊');
+            }else{
+                if( $('.modeChange').prop('disabled') === false ){
+                    $('#clear').css('background-image','url("./images/cards/hardpass.jpg")');
+                    $('.clearFont').text('恭喜過關...兄弟你時間太多了484');
+                }else{
+                    $('#clear').css('background-image','url("./images/cards/pass.jpg")');
+                    $('.clearFont').text('恭喜過關!你是一個正直的人,祝福你^_^');
+                }
+
+            }
+            $('#clear').hide().fadeIn(3000);
+        }
+
+        $('.modeChange').click(function(){
+            
+            Swal.fire({
+                title: "確實,狗才玩",
+                text: "點選懦弱以重新開始簡單模式",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "懦弱",
+                cancelButtonText: "獸人永不為奴",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "快樂遊戲0v0b",
+                        text: "懦弱的選擇比輸更可怕",
+                        icon: "success"
+                    });
+                    $(this).attr('disabled',true);
+                    $(this).text("請開始你的表演");
+                    $('#game').empty();
+                    begin();
+                }
+            });
+        })
+
+    </script>
+</body>
+</html>

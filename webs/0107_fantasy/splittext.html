@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fantasy World</title>
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <style>
+    body {
+      height: 100vh;
+      font-family: "Press Start 2P", serif;
+      overflow-x: hidden;
+    }
+
+    section {
+      color: white;
+      height: 100%;
+      background: #000;
+      border-bottom: 1px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section:nth-child(1) {
+      background: url("./images/ff5.jpg") no-repeat center/cover;
+    }
+
+    section:nth-child(2) {
+      background:
+        linear-gradient(0deg, black, transparent),
+        url("./images/bh3.jpg") no-repeat center/cover;
+    }
+
+    #text01 {
+      width: 70%;
+      height: 250px;
+      font-size: 1.5rem;
+      padding: 1rem;
+      background: #070d7f;
+      border: 5px solid #eee;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 5%;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: 1;
+    }
+
+    #text02 {
+      width: 100%;
+      height: 100%;
+      color: red;
+      text-align: center;
+      font-size: 8rem;
+      font-family: '標楷體';
+      font-weight: 500;
+      display: none;
+      justify-content: space-evenly;
+      align-items: flex-end;
+    }
+
+    #text03 {
+      font-size: 8rem;
+      display: none;
+    }
+
+    .charsClass {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div id="text01">Final Fantasy is a fantasy anthology media franchise created by Hironobu Sakaguchi which is owned, developed, and published by Square Enix (formerly Square). The franchise centers on a series of fantasy role-playing video games.</div>
+  </section>
+
+  <section>
+    <div id="text02">生化危機3</div>
+  </section>
+
+  <section>
+    <div id="text03">臨兵鬥者皆陣列在前</div>
+  </section>
+
+  <!-- jQuery -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+  <!-- Bootstrap -->
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <!-- gsap -->
+  <script src="./gsap/gsap.js"></script>
+  <script src="./gsap/ScrollTrigger.js"></script>
+  <script src="./gsap/SplitText.min.js"></script>
+
+  <script>
+    // 註冊
+    gsap.registerPlugin(SplitText);
+
+    // splitText 可以將一段文字拆成 字元(char)、單字(word)、行(line)
+    const text01 = new SplitText('#text01', {
+      type: 'chars, words, lines',
+    })
+
+    console.log('text01', text01)
+    console.log('chars:', text01.chars)
+    console.log('words:', text01.words)
+    console.log('lines:', text01.lines)
+
+    gsap.from(text01.chars, {
+      opacity: 0,
+      stagger: {
+        each: 0.05,
+      },
+      x: 100,
+      scale: 10,
+      // ease: 'steps(1)'
+    })
+
+    const text02 = new SplitText('#text02', {
+      type: 'chars',
+    })
+
+    // 動畫開始顯示文字區塊
+    gsap.set('#text02', {
+      display: 'flex',
+    })
+
+    gsap.set(text02.chars, {
+      margin: '0 -300',
+    })
+
+    gsap.from(text02.chars, {
+      scale: 20,
+      filter: 'blur(50px)',
+      duration: 5,
+      opacity: 0,
+      stagger: {
+        each: 1,
+        from: 'random'
+      }
+    })
+
+    gsap.from('#text02', {
+      background: 'red',
+      filter: 'blur(50px)',
+      backgroundFilter: 'blur(100px)',
+      duration: 5,
+    })
+
+
+    const text03 = new SplitText('#text03', {
+      type: 'chars, words, lines',
+      charsClass: 'charsClass'
+    })
+
+    gsap.set('#text03', {
+      display: 'block',
+    })
+
+    const tl = gsap.timeline()
+    tl
+      .from(text03.chars, {
+        duration: 0.3,
+        opacity: 0,
+        x: 100,
+        scale: 100,
+        rotation: 3600,
+        stagger: 0.5
+      })
+      .to(text03.chars, {
+        x: 'random(-20000, 20000)',
+        y: 'random(-20000, 20000)',
+        delay: 2,
+        duration: 1,
+        repeat: 1,
+        yoyo: true,
+        ease: 'power3.inOut',
+        // 當動畫完成時
+        onComplete() {
+          text03.revert() // 重組回 DOM 的文字內容
+        }
+      })
+  </script>
+</body>
+
+</html>

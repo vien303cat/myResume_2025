@@ -1,0 +1,400 @@
+body{
+    font-family: "Noto Sans", sans-serif;
+    background: url(./clockimage/touhou_wallpapers___flandre_scarlet_by_virtlux_dafguel-fullview.jpg) no-repeat;
+    /* background-size: cover ; */
+    background-size: 100% ;
+    overflow-y: hidden;
+}
+#hat{
+    position: absolute;
+    top: 126px;
+    left: 851px;
+    width: 350px;
+    height: 200px;
+    transform: rotate(14deg);
+    background: url("./clockimage/flan.png") no-repeat center/cover;
+}
+#clock{
+    width:  300px;
+    height: 300px;
+    background: rgba(255,255,255,0.9);
+    border: 5px solid #333333;
+    border-radius: 50%;
+    position: relative;
+    margin: auto;
+    margin-top: 13% ;
+}
+#hour{
+    width: 100px;
+    height: 40px;
+    background-color: skyblue;
+    border-radius: 5px;
+    position: absolute;
+    left: calc(45px);
+    top: calc(43%);
+    transform: rotate(180deg);
+    /* 設定選轉的起始點 */
+    transform-origin: right center;
+    transition: 0.5s;
+    background: url('./clockimage/hour.png') no-repeat center;
+}
+#minute{
+    /* 寬度以及position加起來要50% */
+    width: 120px;
+    height: 40px;
+    background-color: lightcoral;
+    border-radius: 5px;
+    position: absolute;
+    left: calc(26px);
+    top: calc(43%);
+    transform: rotate(240deg);
+    /* 設定選轉的起始點 */
+    transform-origin: right center;
+    transition: 0.5s;
+    background: url('./clockimage/min.png') no-repeat center;
+}
+#second{
+    /* 寬度以及position加起來要50% */
+    width: 120px;
+    height: 40px;
+    position: absolute;
+    left: calc(26px);
+    top: calc(43%);
+    transform: rotate(90deg);
+    /* 設定選轉的起始點 */
+    transform-origin: right center;
+    transition: 0.5s;
+    background: url('./clockimage/second2.png') no-repeat center;
+}
+#center{
+    width: 20px;
+    height: 20px;
+    left: calc(50% - 10px);
+    top: calc(50% - 10px);
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+
+}
+#textArea{
+    background: rgba(255,255,255,0.8);
+    width: 30%;
+    margin: auto;
+    margin-top: 3% ;
+    font-size: 20px;
+}
+
+
+
+.tick {
+    width: 4px;
+    height: 18px;
+    background-color: #333333;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    /* 將刻度的旋轉中心設置在圓的外圍 */
+    transform-origin: center -130px; 
+}
+
+/* 中心定位 */
+.diamond-container {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 上短下長的旋轉菱形 */
+.d1 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; /* 增加平滑過渡效果 */
+    transform: rotate(40deg); /* 旋轉 45 度 */
+
+    
+    background-color: rgba(124, 250, 250, 0.61);  /* 滑入時的顏色 */
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+    display: none;
+}
+/* 滑鼠滑入時的顏色變化和旋轉 */
+.d1.active {
+    display: block;
+}
+.p1{
+    top: 175px;
+    left: -652px;
+}
+
+.d2 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(35deg);
+}
+.d2.active {
+    background-color: rgba(110, 250, 152, 0.61);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p2{
+    top: 155px;
+    left: -540px;
+}
+.d3 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(30deg);
+}
+.d3.active {
+    background-color: rgba(250, 253, 84, 0.61);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p3{
+    top: 145px;
+    left: -430px;
+}
+
+.d4 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(25deg);
+}
+.d4.active {
+    background-color: rgba(252, 168, 59, 0.61);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p4{
+    top: 145px;
+    left: -315px;
+}
+
+.d5 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(20deg);
+}
+.d5.active {
+    background-color: rgb(230 11 247 / 61%);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p5 {
+    top: 167px;
+    left: -204px;
+}
+
+.d6 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(13deg)
+}
+.d6.active {
+    background-color: rgb(161 52 247 / 61%);
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p6 {    
+    top: 264px;
+    left: -141px;
+}
+
+.d7 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(10deg)
+}
+.d7.active {
+    background-color: color(a98-rgb 0.26 0.46 0.86 / 0.63);
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p7 {    
+    top: 313px;
+    left: -52px;
+}
+
+.d8 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(5deg)
+}
+.d8.active {
+    background-color: rgb(24 245 243 / 61%);
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p8 {    
+    top: 308px;
+    left: 37px;
+}
+
+
+.d9 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(355deg)
+}
+.d9.active {
+    background-color: rgb(24 245 243 / 61%);
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p9 {    
+    top: 308px;
+    right: 37px;
+}
+
+
+.d10 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(350deg);
+}
+.d10.active {
+    background-color:  color(a98-rgb 0.26 0.46 0.86 / 0.63);
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p10 {
+    top: 313px;
+    right: -52px;
+}
+
+
+.d11 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(347deg);
+}
+.d11.active {
+    background-color: rgb(161 52 247 / 61%);
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p11 {
+    top: 264px;
+    right: -141px;
+}
+
+
+.d12 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(340deg);
+}
+.d12.active {
+    background-color: rgb(230 11 247 / 61%);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p12 {
+    top: 167px;
+    right: -204px;
+}
+
+.d13 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(335deg);
+}
+.d13.active {
+    background-color: rgba(252, 168, 59, 0.61);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p13{
+    top: 145px;
+    right: -315px;
+}
+
+
+.d14 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(330deg);
+}
+.d14.active {
+    background-color: rgba(250, 253, 84, 0.61);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p14{
+    top: 145px;
+    right: -430px;
+}
+
+
+.d15 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(325deg);
+}
+.d15.active {
+    background-color: rgba(110, 250, 152, 0.61);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p15{
+    top: 155px;
+    right: -540px;
+}
+
+.d16 {
+    width: 90px;
+    height: 120px;
+    /* background-color: #4CAF50; */
+    clip-path: polygon(50% 0%, 75% 30%, 50% 100%, 25% 30%);
+    transition: background-color 0.2s ease, transform 0.2s ease; 
+    transform: rotate(320deg);
+}
+.d16.active {
+    background-color: rgba(124, 250, 250, 0.61);  
+    box-shadow:4px 4px 12px 4px rgba(255, 255, 255, 1);
+}
+.p16{
+    top: 175px;
+    right: -652px;
+}
+
+
+/* ---- reset ---- */ 
+body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } 
+canvas{ display: block; vertical-align: bottom; } 
+/* ---- particles.js container ---- */ 
+#particles-js{ position:absolute; width: 100%; height: 100%;  background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ 
+.count-particles{ position: absolute; top: 0; left: 0; width: 80px; font-size: .8em; text-align: left; text-indent: 4px; line-height: 14px; padding-bottom: 2px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; } 
+.js-count-particles{ font-size: 1.1em; } #stats, 
+.count-particles{ -webkit-user-select: none; margin-top: 5px; margin-left: 5px; } #stats{ border-radius: 3px 3px 0 0; overflow: hidden; } 
+.count-particles{ border-radius: 0 0 3px 3px; }

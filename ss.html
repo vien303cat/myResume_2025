@@ -1,31 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="./index_assets/css/index.css?v=202208020843" />
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-131804412-6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="./index_assets/css/index.css?v=202208020843"><script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"> </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-131804412-6"></script><script>window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  
-  gtag('config', 'UA-131804412-6');</script><title>kento520.tw</title><meta name="title" content="kento520.tw"><meta name="description" content="console.log('Hello World')"><meta property="og:type" content="website"><meta property="og:url" content="https://kento520.tw/"><meta property="og:title" content="kento520.tw"><meta property="og:description" content="console.log('Hello World')"><meta property="og:image" content="https://kento520.tw/index_assets/img/logo/logo_banner.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://kento520.tw/"><meta property="twitter:title" content="kento520.tw"><meta property="twitter:description" content="console.log('Hello World')"><meta property="twitter:image" content="https://kento520.tw/index_assets/img/logo/logo_banner.png"></head><body><div id="bg"><css-doodle>:doodle {
-    @grid: 1x3 / 100vmax;
-    position: absolute;
-    top: 0; left: 0;
-    z-index: 0;
-    }
-  
-    @size: 100% 150%;
-    position: absolute;
-  
-    background: @m(100, (
-    linear-gradient(transparent, @p(
-    #FFFDE1@repeat(2, @p([0-9a-f])),
-    #FB3569@repeat(2, @p([0-9a-f]))
-    ))
-    @r(0%, 100%) @r(0%, 100%) /
-    @r(1px) @r(23vmin)
-    no-repeat
-    ));
-  
-    will-change: transform;
-    animation: f 30s linear calc(-20s / @size() * @i()) infinite;
-    @keyframes f {
-    from { transform: translateY(-100%) }
-    to { transform: translateY(100%) }
-  }</css-doodle></div><div id="app"><nav class="navbar navbar-expand-lg navbar-dark fixed-top"> <div class="container"><a class="navbar-brand" href="#header">kento520.tw</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ms-auto mb-2 mb-lg-0"><li class="nav-item"><a class="nav-link" href="#" @click.prevent="scrollTo(&quot;works&quot;)">Works</a></li><li class="nav-item"><a class="nav-link" href="#" @click.prevent="scrollTo(&quot;mix&quot;)">MIX</a></li></ul></div></div></nav><div class="container"><div class="row align-content-center justify-content-center text-white position-relative" id="header"><div class="col-8"><img class="w-100" src="./index_assets/img/logo/logo_animated.svg"><p class="mt-2 text-center">console.log('Hello World')</p></div><div class="position-absolute text-center" id="more" @click="scrollTo(&quot;works&quot;)"><p>MORE</p><i class="material-icons">expand_more</i></div></div><div class="row text-white justify-content-center my-5" id="works" ref="content"><div class="col-12"><h1 class="text-center">Works</h1><hr class="opacity-100 bg-white"></div><div class="col-12 col-md-6 col-lg-3 my-4" v-for="card in cards"><div class="rotating-card-container manual-flip" :class="{ hover: card.flip }"><div class="card card-rotate"><div class="front front-background" :style="{ &quot;background-image&quot;: `url(./index_assets/img/works/${card.img})`}"><div class="card-body"><h3 class="card-title">{{ card.title }}</h3><p class="card-description" v-html="card.description"></p><div class="stats text-center"><button class="btn btn-success btn-fill btn-round btn-rotate" type="button" name="button" @click="card.flip = true"><i class="material-icons">info</i><span> 詳細資訊...</span></button></div></div></div><div class="back back-background" :style="{ &quot;background-image&quot;: `url(./index_assets/img/works/${card.img})`}"><div class="card-body"><h4 class="card-title">連結</h4><div class="stats text-center"><a class="btn btn-just-icon" v-for="link in card.links" :class="[&quot;btn-&quot;+link.type]" :href="link.url" target="_blank"><i class="fab fa-github" v-if="link.type === &quot;github&quot;"></i><i class="fab fa-youtube" v-else-if="link.type === &quot;youtube&quot;"></i><i class="fab fa-discord" v-else-if="link.type === &quot;discord&quot;"></i><img class="icon-line" src="./index_assets/img/icons/line_icon01.png" v-else-if="link.type === &quot;line&quot;"><i class="fas fa-globe" v-else-if="link.type === &quot;web&quot;"></i><img class="icon-am" src="./index_assets/img/icons/am.png" v-else-if="link.type === &quot;am&quot;"><img class="icon-greasy" src="./index_assets/img/icons/greasy.png" v-else-if="link.type === &quot;greasy&quot;"><i class="fas fa-newspaper" v-else-if="link.type === &quot;news&quot;"></i></a><br><br><button class="btn btn-danger btn-fill btn-round btn-rotate" type="button" name="button" @click="card.flip = false"><i class="material-icons">refresh</i><span> 返回</span></button></div></div></div></div></div></div></div><div class="row text-white justify-content-center my-5" id="mix"><div class="col-12"><h1 class="text-center">MIX</h1><hr class="opacity-100 bg-white"></div><div class="col-12 col-md-6 col-lg-3 my-4" v-for="card in mixes"><div class="rotating-card-container manual-flip" :class="{ hover: card.flip }"><div class="card card-rotate"><div class="front front-background" :style="{ &quot;background-image&quot;: `url(./index_assets/img/mix/${card.id}.jpg)`}"><div class="card-body"><h3 class="card-title">{{ card.title }}</h3><p class="card-description" v-html="card.genre"></p><div class="stats text-center"><a class="btn btn-success btn-fill btn-round btn-rotate" :href="&quot;https://www.mixcloud.com/kento520/&quot; + card.id" target="_blank"><i class="material-icons">play_arrow</i><span> 播放</span></a></div></div></div></div></div></div></div><div class="row text-white justify-content-center my-5" id="footer"><div class="col-12"><p class="text-center">Made with ❤ by Kento</p></div><div class="col-12 text-center"><a href="https://github.com/rogeraabbccdd" target="_blank"><i class="fa-lg fab fa-github"></i></a><a href="https://twitter.com/kentotw0520" target="_blank"><i class="fa-lg fab fa-twitter"></i></a><a href="https://rogeraabbccdd.github.io/blog/" target="_blank"><i class="fa-lg fas fa-pencil-alt"></i></a><a href="mailto:rogeraabbccdd@gmail.com" target="_blank"><i class="fa-lg fas fa-envelope"></i></a></div></div></div></div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script><script src="https://unpkg.com/css-doodle@0.29.0/css-doodle.min.js"> </script><script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.33/vue.global.prod.js" integrity="sha512-iUCDw8vYsHwsf4l/59rnM96yLXB50udB2qKnaoD80DUjuQUAN/truZob78ZDFJF3eEs3fLBPAZRI6G1qU9QW1g==" crossorigin="anonymous"></script><script src="./index_assets/js/app.js?v=202309191510"></script></body></html>
+      gtag("config", "UA-131804412-6");
+    </script>
+    <title>kento520.tw</title>
+    <meta name="title" content="kento520.tw" />
+    <meta name="description" content="console.log('Hello World')" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kento520.tw/" />
+    <meta property="og:title" content="kento520.tw" />
+    <meta property="og:description" content="console.log('Hello World')" />
+    <meta
+      property="og:image"
+      content="https://kento520.tw/index_assets/img/logo/logo_banner.png"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://kento520.tw/" />
+    <meta property="twitter:title" content="kento520.tw" />
+    <meta property="twitter:description" content="console.log('Hello World')" />
+    <meta
+      property="twitter:image"
+      content="https://kento520.tw/index_assets/img/logo/logo_banner.png"
+    />
+  </head>
+  <body>
+    <div id="bg">
+      <css-doodle
+        >:doodle { @grid: 1x3 / 100vmax; position: absolute; top: 0; left: 0;
+        z-index: 0; } @size: 100% 150%; position: absolute; background: @m(100,
+        ( linear-gradient(transparent, @p( #FFFDE1@repeat(2, @p([0-9a-f])),
+        #FB3569@repeat(2, @p([0-9a-f])) )) @r(0%, 100%) @r(0%, 100%) / @r(1px)
+        @r(23vmin) no-repeat )); will-change: transform; animation: f 30s linear
+        calc(-20s / @size() * @i()) infinite; @keyframes f { from { transform:
+        translateY(-100%) } to { transform: translateY(100%) } }</css-doodle
+      >
+    </div>
+    <div id="app">
+      <nav class="nav bar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#header">kento520.tw</a
+          ><button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#" @click.prevent='scrollTo("works")'
+                  >Works</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" @click.prevent='scrollTo("mix")'
+                  >MIX</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div
+          class="row align-content-center justify-content-center text-white position-relative"
+          id="header"
+        >
+          <div class="col-8">
+            <img
+              class="w-100"
+              src="./index_assets/img/logo/logo_animated.svg"
+            />
+            <p class="mt-2 text-center">console.log('Hello World')</p>
+          </div>
+          <div
+            class="position-absolute text-center"
+            id="more"
+            @click='scrollTo("works")'
+          >
+            <p>MORE</p>
+            <i class="material-icons">expand_more</i>
+          </div>
+        </div>
+        <div
+          class="row text-white justify-content-center my-5"
+          id="works"
+          ref="content"
+        >
+          <div class="col-12">
+            <h1 class="text-center">Works</h1>
+            <hr class="opacity-100 bg-white" />
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 my-4" v-for="card in cards">
+            <div
+              class="rotating-card-container manual-flip"
+              :class="{ hover: card.flip }"
+            >
+              <div class="card card-rotate">
+                <div
+                  class="front front-background"
+                  :style='{ "background-image": `url(./index_assets/img/works/${card.img})`}'
+                >
+                  <div class="card-body">
+                    <h3 class="card-title">{{ card.title }}</h3>
+                    <p class="card-description" v-html="card.description"></p>
+                    <div class="stats text-center">
+                      <button
+                        class="btn btn-success btn-fill btn-round btn-rotate"
+                        type="button"
+                        name="button"
+                        @click="card.flip = true"
+                      >
+                        <i class="material-icons">info</i
+                        ><span> 詳細資訊...</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="back back-background"
+                  :style='{ "background-image": `url(./index_assets/img/works/${card.img})`}'
+                >
+                  <div class="card-body">
+                    <h4 class="card-title">連結</h4>
+                    <div class="stats text-center">
+                      <a
+                        class="btn btn-just-icon"
+                        v-for="link in card.links"
+                        :class='["btn-"+link.type]'
+                        :href="link.url"
+                        target="_blank"
+                        ><i
+                          class="fab fa-github"
+                          v-if='link.type === "github"'
+                        ></i
+                        ><i
+                          class="fab fa-youtube"
+                          v-else-if='link.type === "youtube"'
+                        ></i
+                        ><i
+                          class="fab fa-discord"
+                          v-else-if='link.type === "discord"'
+                        ></i
+                        ><img
+                          class="icon-line"
+                          src="./index_assets/img/icons/line_icon01.png"
+                          v-else-if='link.type === "line"' /><i
+                          class="fas fa-globe"
+                          v-else-if='link.type === "web"'
+                        ></i
+                        ><img
+                          class="icon-am"
+                          src="./index_assets/img/icons/am.png"
+                          v-else-if='link.type === "am"' /><img
+                          class="icon-greasy"
+                          src="./index_assets/img/icons/greasy.png"
+                          v-else-if='link.type === "greasy"' /><i
+                          class="fas fa-newspaper"
+                          v-else-if='link.type === "news"'
+                        ></i></a
+                      ><br /><br /><button
+                        class="btn btn-danger btn-fill btn-round btn-rotate"
+                        type="button"
+                        name="button"
+                        @click="card.flip = false"
+                      >
+                        <i class="material-icons">refresh</i><span> 返回</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row text-white justify-content-center my-5" id="mix">
+          <div class="col-12">
+            <h1 class="text-center">MIX</h1>
+            <hr class="opacity-100 bg-white" />
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 my-4" v-for="card in mixes">
+            <div
+              class="rotating-card-container manual-flip"
+              :class="{ hover: card.flip }"
+            >
+              <div class="card card-rotate">
+                <div
+                  class="front front-background"
+                  :style='{ "background-image": `url(./index_assets/img/mix/${card.id}.jpg)`}'
+                >
+                  <div class="card-body">
+                    <h3 class="card-title">{{ card.title }}</h3>
+                    <p class="card-description" v-html="card.genre"></p>
+                    <div class="stats text-center">
+                      <a
+                        class="btn btn-success btn-fill btn-round btn-rotate"
+                        :href='"https://www.mixcloud.com/kento520/" + card.id'
+                        target="_blank"
+                        ><i class="material-icons">play_arrow</i
+                        ><span> 播放</span></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row text-white justify-content-center my-5" id="footer">
+          <div class="col-12">
+            <p class="text-center">Made with ❤ by Kento</p>
+          </div>
+          <div class="col-12 text-center">
+            <a href="https://github.com/rogeraabbccdd" target="_blank"
+              ><i class="fa-lg fab fa-github"></i></a
+            ><a href="https://twitter.com/kentotw0520" target="_blank"
+              ><i class="fa-lg fab fa-twitter"></i></a
+            ><a href="https://rogeraabbccdd.github.io/blog/" target="_blank"
+              ><i class="fa-lg fas fa-pencil-alt"></i></a
+            ><a href="mailto:rogeraabbccdd@gmail.com" target="_blank"
+              ><i class="fa-lg fas fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/css-doodle@0.29.0/css-doodle.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.33/vue.global.prod.js"
+      integrity="sha512-iUCDw8vYsHwsf4l/59rnM96yLXB50udB2qKnaoD80DUjuQUAN/truZob78ZDFJF3eEs3fLBPAZRI6G1qU9QW1g=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./index_assets/js/app.js?v=202309191510"></script>
+  </body>
+</html>

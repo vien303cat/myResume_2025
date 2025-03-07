@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>作品展示網站</title>
     <!-- reset -->
     <link rel="stylesheet" href="./css/reset.css">
     <!-- bootstrap 的 css -->
@@ -58,7 +58,8 @@
             height: 100%;
         }
 
-        #imgGroup .carousel img {
+        #imgGroup .carousel img 
+        #imgGroup .carousel-item img{
             object-fit: cover;
         }
 
@@ -75,7 +76,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top  ">
         <div class="container-fluid">
-            <a class="navbar-brand me-auto ms-3" href="#">遠離塵世的幻想鄉</a>
+            <a class="navbar-brand me-auto ms-3" href="#">陳昱瑄專案展示</a>
         
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -85,19 +86,10 @@
             <div id="myNav" class="collapse navbar-collapse" >
                 <ul class="navbar-nav  mb-2 mb-lg-0  ms-3 ms-lg-auto" >
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#top">主要區域</a>
+                        <a class="nav-link active" aria-current="page" href="#top">作品展示</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#cardArea">主要角色</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#introduce">場景介紹</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#gMap">東方故事</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#emailForm">聯絡我們</a>
+                        <a class="nav-link" href="#cardArea">工作經歷</a>
                     </li>
                 </ul>
             </div>
@@ -112,39 +104,56 @@
             <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="1"></button>
             <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="2"></button>
             <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#imgGroup" data-bs-slide-to="5"></button>
         </div>
         <!-- 輪播圖內容 一個 .carousel-item 為一個輪播單位，第一個開始的要設定 .active -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <a href="">
-                    <img src="./image/192846.png" class="d-block w-100">
-
-                </a>
+                    <img src="./webs/ramenown/ramenown1_2.png" class="d-block w-100" onclick="clickImg(0)">
                 <div class="carousel-caption d-none d-md-block bg-danger rounded-4" >
-                    <h5>博麗神社</h5>
+                    <h5>個人專題_拉麵王</h5>
                     <p>
-                        博麗神社（ はくれいじんじゃ ，Hakurei Jinja）是坐落在博麗大結界上的一座小日式神社，同時也是東方系列的主角——博麗靈夢的家。
-                        博麗神社可以說是東方系列中最重要的場景之一，幾乎所有的正作遊戲、小說、漫畫的故事都有或多或少的部分發生在這座神社中。
+                        主要利用Vue3、NodeJS、MongoDB製作的一個記錄拉麵店的前後端分離專案。其中還有使用許多套件例如:<br>
+                        前端： Vuetify, Vue Router, Pinia, VITE, tsparticles, swiper, sweetalert2<br>
+                        後端： Express, mongoose, passport, bcrypt, jsonwebtoken, validator, axios, cloudinary
                     </p>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="./image/194490.png" class="d-block w-100">
-                <div class="carousel-caption d-none d-md-block rounded-4" style="background-color: var(--bs-orange);">
-                    <h5>人間之里</h5>
+            <div class="carousel-item active">
+                <img src="./webs/1114_linebot/linebot.png" class="d-block w-100" onclick="clickImg(1)">
+                <div class="carousel-caption d-none d-md-block rounded-4" style="background-color: var(--bs-orange);" >
+                    <h5>LINE機器人_寶可夢查詢器</h5>
                     <p> 
-                        是幻想鄉中的人類主要的聚居場所。雖然經常有各種各樣的妖怪來到人類村落的商店購物，但是由於有妖怪賢者的庇護，這裡仍然是幻想鄉中最安全的地點。<br>
-                        從外面世界誤入幻想鄉的人類，如果不願意回去原來的世界並且沒有獨自對付妖怪的能力，全部都會被送到人類村落定居。
+                        使用Vue3配上nodeJS以及套上LINE模板試做的Line機器人，可以查詢寶可夢的資訊，包含圖片、屬性、介紹等等。
                     </p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="./image/迷途竹林.png" class="d-block w-100">
+                <img src="./webs/0930_youtube/projectimg.png" class="d-block w-100" onclick="clickImg(2)">
                 <div class="carousel-caption d-none d-md-block  bg-success rounded-4">
-                    <h5>迷途竹林</h5>
-                    <p> 是一個在人類村落旁邊，位於妖怪之山的相反方向之上的巨大竹林。在迷失竹林中坐落著永遠亭
-                        據說，迷失竹林原先並非處於幻想鄉之內，而是一場海嘯將它沖走，後來抵達幻想鄉中<br>
-                        不熟悉竹林的人類和妖怪很容易在裡面迷路。
+                    <h5>youtube仿站</h5>
+                    <p> 
+                        使用原生HTML、CSS、JS製作的youtube仿站(無使用彈性盒、純畫面)，主要是練習排版、以及一些簡單的互動效果。
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/幻想鄉2.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block  bg-secondary rounded-4">
+                    <h5>幻想鄉全景</h5>
+                    <p>
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/幻想鄉2.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block  bg-secondary rounded-4">
+                    <h5>幻想鄉全景</h5>
+                    <p>
+                        各種非人的生物，例如妖怪都住在這裡，亦有少數人類居住於此地。
+                        由於有強大的結界將幻想鄉外部遮斷，幻想鄉外部無法確認幻想鄉的存在，同時無法由外部進入幻想鄉。
+                        同樣幻想鄉內部也無法確認幻想鄉外部的樣貌，亦不能離開幻想鄉。因此，妖怪們在此建立了一個與外地相異的文明。
                     </p>
                 </div>
             </div>
@@ -263,5 +272,28 @@
             imageAlt: "Custom image"
         });
     })
+    
+    function clickImg(index){
+        const urlIndex = [
+            'https://github.com/vien303cat/ramenOwnFront',
+            'https://github.com/vien303cat/myLineBot',
+            'https://vien303cat.github.io/myYoutubeExample/',
+
+        ];
+        Swal.fire({
+            title: "是否開啟連結",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "取消",
+            confirmButtonText: "走吧",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.open(urlIndex[index]);
+            }
+        });
+    }
 </script>
 </html>

@@ -120,18 +120,27 @@
                     </p>
                 </div>
             </div>
-            <div class="carousel-item active">
+            <div class="carousel-item">
                 <img src="./webs/1114_linebot/linebot.png" class="d-block w-100" onclick="clickImg(1)">
                 <div class="carousel-caption d-none d-md-block rounded-4" style="background-color: var(--bs-orange);" >
                     <h5>LINE機器人_寶可夢查詢器</h5>
                     <p> 
-                        使用Vue3配上nodeJS以及套上LINE模板試做的Line機器人，可以查詢寶可夢的資訊，包含圖片、屬性、介紹等等。
+                        使用nodeJS並套上LINE模板試做的Line機器人，可以查詢寶可夢的資訊，包含圖片、屬性、介紹等等。
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./webs/1023_clocks/clockimage/ex.png" class="d-block w-100" onclick="clickImg(4)">
+                <div class="carousel-caption d-none d-md-block  bg-success rounded-4">
+                    <h5>純JS練習鬧鐘</h5>
+                    <p> 
+                        使用純JS來做的鬧鐘圖示，練習JS的動畫、時間日期套用還有particle的套用
                     </p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="./webs/0930_youtube/projectimg.png" class="d-block w-100" onclick="clickImg(2)">
-                <div class="carousel-caption d-none d-md-block  bg-success rounded-4">
+                <div class="carousel-caption d-none d-md-block bg-dark rounded-4">
                     <h5>youtube仿站</h5>
                     <p> 
                         使用原生HTML、CSS、JS製作的youtube仿站(無使用彈性盒、純畫面)，主要是練習排版、以及一些簡單的互動效果。
@@ -139,32 +148,29 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="./image/幻想鄉2.jpg" class="d-block w-100">
-                <div class="carousel-caption d-none d-md-block  bg-secondary rounded-4">
-                    <h5>幻想鄉全景</h5>
+                <img src="./webs/1125_bsTouhou/bs拉版截圖2.png" class="d-block w-100" onclick="clickImg(3)">
+                <div class="carousel-caption d-none d-md-block bg-primary rounded-4">
+                    <h5>bootstrap5.3 仿站練習</h5>
                     <p>
+                        主要是練習依照指定的版型並且使用bootstrap的元件且利用表單、套用googlemap來製作一個rwd的簡易網站。
                     </p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="./image/幻想鄉2.jpg" class="d-block w-100">
-                <div class="carousel-caption d-none d-md-block  bg-secondary rounded-4">
-                    <h5>幻想鄉全景</h5>
+                <img src="./webs/images/fix.png" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block  bg-warning rounded-4">
+                    <h5>HTML、CSS練習</h5>
                     <p>
-                        各種非人的生物，例如妖怪都住在這裡，亦有少數人類居住於此地。
-                        由於有強大的結界將幻想鄉外部遮斷，幻想鄉外部無法確認幻想鄉的存在，同時無法由外部進入幻想鄉。
-                        同樣幻想鄉內部也無法確認幻想鄉外部的樣貌，亦不能離開幻想鄉。因此，妖怪們在此建立了一個與外地相異的文明。
+                        主要是練習HTML及CSS來繪製圖片,練習偽元素、彈性盒...等排版技巧。
                     </p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="./image/幻想鄉2.jpg" class="d-block w-100">
-                <div class="carousel-caption d-none d-md-block  bg-secondary rounded-4">
-                    <h5>幻想鄉全景</h5>
+                <img src="./webs/1111_flexbox_layout/ffimg.png" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block   bg-danger  rounded-4">
+                    <h5>彈性盒切版練習</h5>
                     <p>
-                        各種非人的生物，例如妖怪都住在這裡，亦有少數人類居住於此地。
-                        由於有強大的結界將幻想鄉外部遮斷，幻想鄉外部無法確認幻想鄉的存在，同時無法由外部進入幻想鄉。
-                        同樣幻想鄉內部也無法確認幻想鄉外部的樣貌，亦不能離開幻想鄉。因此，妖怪們在此建立了一個與外地相異的文明。
+                        主要是練習依照指定的版型並且使用bootstrap的元件配上彈性盒來排版。
                     </p>
                 </div>
             </div>
@@ -261,23 +267,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous'></script>
 <script>
-    // 練習sweetAlert
-    $('#submit').click(function(event){
-        Swal.fire({
-            title: "已送出",
-            text: "很開心您也喜歡東方！祝您有個美好快樂的一天！",
-            imageUrl: "./image/itouhouenter2.jpg",
-            imageWidth: 400,
-            imageHeight: 200,
-            imageAlt: "Custom image"
-        });
-    })
-    
     function clickImg(index){
         const urlIndex = [
             'https://github.com/vien303cat/ramenOwnFront',
             'https://github.com/vien303cat/myLineBot',
             'https://vien303cat.github.io/myYoutubeExample/',
+            'https://vien303cat.github.io/bsTouhou/',
+            'https://vien303cat.github.io/FlanClocksPractice/',
 
         ];
         Swal.fire({
